@@ -18,4 +18,31 @@ public class NBody {
         double radius = file_in.readDouble();
         return radius;
     }
+
+    /**
+     * Returns an array of Planets corresponding to the planets in the given
+     * file.
+     */
+    public static Planet[] readPlanets(String file_name) {
+        In file_in = new In(file_name);
+
+        int N = file_in.readInt();
+        file_in.readDouble(); // Skips the double value radius
+
+        Planet[] planets = new Planet[N]; // Just open N size of spaces for Planet
+        for (int index = 0; index < N; ++index) {
+            double xxPos = file_in.readDouble();
+            double yyPos = file_in.readDouble();
+            double xxVel = file_in.readDouble();
+            double yyVel = file_in.readDouble();
+            double mass = file_in.readDouble();
+            String imgFileName = file_in.readString();
+
+            /**
+             * Instantiation of every Planet in planets array.
+             */
+            planets[index] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
+        }
+        return planets;
+    }
 }
