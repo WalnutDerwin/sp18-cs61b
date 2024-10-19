@@ -112,7 +112,7 @@ public class Planet {
     }
 
     /**
-     * Updates the planet's position and velocity
+     * Updates the planet's position and velocity based on dt, fx and fy
      *
      * @param dt a small period of time
      * @param fx the X-direction force which will cause the planet to accelerate
