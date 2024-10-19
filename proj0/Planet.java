@@ -110,4 +110,31 @@ public class Planet {
         }
         return netForceY;
     }
+
+    /**
+     * Updates the planet's position and velocity
+     *
+     * @param dt a small period of time
+     * @param fx the X-direction force which will cause the planet to accelerate
+     * @param fy the Y-direction force which will cause the planet to accelerate
+     */
+    public void update(double dt, double fx, double fy) {
+        /**
+         * Calculates the acceleration using the provided x- and y- forces
+         */
+        double xxAcc = fx / this.mass;
+        double yyAcc = fy / this.mass;
+
+        /**
+         * Calculates the new velocity
+         */
+        this.xxVel += xxAcc * dt;
+        this.yyVel += yyAcc * dt;
+
+        /**
+         * Calculates the new position
+         */
+        this.xxPos += this.xxVel * dt;
+        this.yyPos += this.yyVel * dt;
+    }
 }
