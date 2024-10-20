@@ -1,6 +1,42 @@
 
 public class NBody {
 
+    public static void main(String[] args) {
+        /**
+         * Collects All Needed Input
+         */
+        // Store the 0th and 1st arguments as doubles named T and dt
+        double T = Double.parseDouble(args[0]);
+        double dt = Double.parseDouble(args[1]);
+
+        // Store the 2nd argument as a String named filename
+        String file_name = args[2];
+
+        // Read in the planets and the universe radius from the file
+        double universe_radius = readRadius(file_name);
+        Planet[] planets = readPlanets(file_name);
+
+        /**
+         * Draws the Background
+         */
+        // Sets the scale which matches the radius of the universe
+        StdDraw.setScale(-universe_radius, universe_radius);
+        StdDraw.clear();
+
+        // Draws the image images/starfield.jpg as the background
+        StdDraw.picture(0, 0, "images/starfield.jpg");
+
+        /**
+         * Draws All of the Planets
+         *
+         * Draws each one of the planets in the planets array
+         */
+        for (Planet p : planets) {
+            p.draw();
+        }
+        StdDraw.show();
+    }
+
     /**
      * Returns the radius of the universe(a double value) corresponding to the
      * given file.

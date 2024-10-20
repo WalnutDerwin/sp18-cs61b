@@ -137,4 +137,11 @@ public class Planet {
         this.xxPos += this.xxVel * dt;
         this.yyPos += this.yyVel * dt;
     }
+
+    /**
+     * Draws the Planet's image at the Planet's position
+     */
+    public void draw() {
+        StdDraw.picture(this.xxPos, this.yyPos, "images/" + imgFileName);
+    }
 }
