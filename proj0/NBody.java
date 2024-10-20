@@ -78,6 +78,16 @@ public class NBody {
 
             count += dt;
         }
+
+        /**
+         * Printing the universe
+         */
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", universe_radius);
+        for (Planet p : planets) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                    p.xxPos, p.yyPos, p.xxVel, p.yyVel, p.mass, p.imgFileName);
+        }
     }
 
     /**
