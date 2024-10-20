@@ -35,6 +35,49 @@ public class NBody {
             p.draw();
         }
         StdDraw.show();
+
+        /**
+         * Animation Part
+         */
+        // Double buffering makes animation not flickering
+        StdDraw.enableDoubleBuffering();
+
+        // Time loop
+        int count = 0;
+        while (count < T) {
+
+            // Create an xForces array and yForces array.
+            double[] xForces = new double[planets.length];
+            double[] yForces = new double[planets.length];
+
+            // Calculates the net x and y forces for each planet
+            for (int i = 0; i < planets.length; ++i) {
+                xForces[i] = planets[i].calcNetForceExertedByX(planets);
+                yForces[i] = planets[i].calcNetForceExertedByY(planets);
+            }
+
+            // Updates each of the planets
+            for (int i = 0; i < planets.length; ++i) {
+                planets[i].update(dt, xForces[i], yForces[i]);
+            }
+
+            // Draws the background image
+            StdDraw.clear();
+            StdDraw.picture(0, 0, "images/starfield.jpg");
+
+            // Draws all of the planets
+            for (Planet p : planets) {
+                p.draw();
+            }
+
+            // Show
+            StdDraw.show();
+
+            // Pause
+            StdDraw.pause(10);
+
+            count += dt;
+        }
     }
 
     /**
