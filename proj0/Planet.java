@@ -1,8 +1,8 @@
 
 public class Planet {
 
-    // represents 6.67 * pow(10, -11);
-    static final double G = 6.67e-11;
+    // represents 6.67 * pow(10, -11)
+    private static final double G = 6.67e-11;
 
     public double xxPos; // its current x position
     public double yyPos; // its current y position
